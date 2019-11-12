@@ -7,23 +7,13 @@ LABEL maintainer="msislam@sfu.ca"
 COPY . /opt/setup_files
 WORKDIR /opt
 
-# setup default user name and password
-ARG USER=docker
-ARG PW=dockerpw
-ARG ROOTPW=dockerroot
-ARG UID=1001
-ARG GID=1001
-
 # mention version numbers
 ARG POLYNOTE_VERSION="0.2.12"
 ARG SCALA_VERSION="2.11"
 ARG DIST_TAR="polynote-dist.tar.gz"
 
-# adding user and rootuser
-RUN useradd -m ${USER} --uid=${UID} && echo "${USER}:${PW}" | chpasswd
-RUN echo "root:${ROOTPW}" | chpasswd
-
 # install packages
+RUN apt-get clean 
 RUN apt-get update && apt-get install -y \
   wget \
   default-jdk \
@@ -55,11 +45,6 @@ ENV PATH="$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin"
 
 RUN python3 -m pip install --upgrade pip
 RUN pip install -r /opt/setup_files/requirements.txt
-
-RUN chmod -R 755 /opt/*
-RUN chown -R ${UID}:${GID} /opt/*
-USER ${UID}:${GID}
-WORKDIR /opt
 
 # copy config.yml file to polynote directory
 RUN cp /opt/setup_files/config/config.yml /opt/polynote/
