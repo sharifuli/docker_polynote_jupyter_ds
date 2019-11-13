@@ -1,4 +1,4 @@
-# Docker Container for Polynote, Jupyter, Scala and PySpark
+# Docker for Polynote, Jupyter, Scala and PySpark
 This repository provides all the necessary files to build a docker image for running [Polynote](https://polynote.org/), [Jupyter-notebook](https://jupyter.org/), [Scala](https://www.scala-lang.org/), [Spark](https://spark.apache.org/) and a few more data science and machine learning tools.
 
 The docker image is also uploaded to **Dockerhub**, so that one can use the image without going through all the hassles.Docker image can be found [here](https://hub.docker.com/r/sharifuli/polynote-jupyter-scala-spark-ds).   
@@ -63,13 +63,16 @@ You should be able to access Polynote from the browser using the following link:
 * If host is remote server: [http://SERVER_IP:8192](http://SERVER_IP:8192)
 * If host is on local: [http://localhost:8192](http://localhost:8192)
 The following image shows Polynote accessed from browser on `localhost:8192`.
+
 !(Polynote on browser)[https://imgur.com/gtEjzza]
 ### Access Jupyter
 You should be able to access Jupyter-notebook from the browser using the following link:
 * If host is remote server: [http://SERVER_IP:7777](http://SERVER_IP:7777)
 * If host is on local: [http://localhost:7777](http://localhost:7777)
 The following image shows Jupyter-notebook accessed from browser on `localhost:7777`.
+
 !(Jupyter-notebook on browser)[https://imgur.com/nO1ZKxd]
+
 If we did not change anything so far, the default password is `abcdef`.
 #### How to Change Jupyter-notebook password
 We can change the Jupyter-notebook password by following one of the following methods.
