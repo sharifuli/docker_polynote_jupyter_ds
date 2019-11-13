@@ -1,1 +1,1 @@
-nohup jupyter-notebook --no-browser --ip=0.0.0.0 & ./polynote/polynote.py
+nohup jupyter-notebook --no-browser --allow-root --ip=0.0.0.0 & ./polynote/polynote.py
