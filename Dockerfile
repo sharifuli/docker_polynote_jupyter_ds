@@ -13,10 +13,10 @@ ARG SCALA_VERSION="2.11"
 ARG DIST_TAR="polynote-dist.tar.gz"
 
 # install packages
-RUN apt-get clean 
+RUN apt-get clean
 RUN apt-get update && apt-get install -y \
   wget \
-  default-jdk \
+  openjdk-8-jdk \
   python3 \
   python3-dev \
   python3-pip \
@@ -39,7 +39,7 @@ RUN wget -q https://www-us.apache.org/dist/spark/spark-2.4.4/spark-2.4.4-bin-had
   rm spark-2.4.4-bin-hadoop2.7.tgz
 
 # set environmental variables
-ENV JAVA_HOME=/usr/lib/jvm/default-java
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ENV SPARK_HOME=/opt/spark-2.4.4-bin-hadoop2.7
 ENV PATH="$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin"
 

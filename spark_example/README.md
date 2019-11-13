@@ -60,15 +60,15 @@ root@83ed7c8eb6ac:/opt#
 ```
 ## Access Polynote
 You should be able to access Polynote from the browser using the following link:
-* If host is remote server: [`http://SERVER_IP:8192`](http://SERVER_IP:8192)
-* If host is on local: [`http://localhost:8192`](http://localhost:8192)
+* If host is remote server: [http://SERVER_IP:8192](http://SERVER_IP:8192)
+* If host is on local: [http://localhost:8192](http://localhost:8192)
 The following image shows Polynote accessed from browser on `localhost:8192`.
 
 ![Polynote on browser](https://imgur.com/gtEjzza.png)
 ## Access Jupyter
 You should be able to access Jupyter-notebook from the browser using the following link:
-* If host is remote server: [`http://SERVER_IP:7777`](http://SERVER_IP:7777)
-* If host is on local: [`http://localhost:7777`](http://localhost:7777)
+* If host is remote server: [http://SERVER_IP:7777](http://SERVER_IP:7777)
+* If host is on local: [http://localhost:7777](http://localhost:7777)
 The following image shows Jupyter-notebook accessed from browser on `localhost:7777`.
 
 ![Jupyter-notebook on browser](https://imgur.com/nO1ZKxd.png)
@@ -119,11 +119,11 @@ Out[2]: 'sha1:caa85ffb276c:f0cd6a90553a35970519ae8718755dffa3d2525e'
 
 In [3]:   
 ```
-Now we need to copy the created hash and replace the existing hash in the file and then **kill the existing Jupyter-notebook** and start a notebook again. We can kill Jupyter-notebook using the following command:
+Now we need to copy the created hash and replace the existing hash in the file and then kill the existing Jupyter-notebook and start a notebook again. We can kill Jupyter-notebook using the following command:
 ```console
-# kill $(ps -aux | grep [j]upyter-notebook | awk '{print $2}' | head -n 1)
+kill $(ps -aux | grep [j]upyter-notebook | awk '{print $2}' | head -n 1)
 ```
-Now we can **restart the Jupyter-notebook** using the following command from the docker bash.
+Now we can restart the Jupyter notebook using the following command from the docker bash.
 ```console
 $ docker exec -it docker_polynote bash
 root@83ed7c8eb6ac:/opt# nohup jupyter-notebook --no-browser --allow-root --ip=0.0.0.0
@@ -140,10 +140,10 @@ Welcome to Scala 2.11.12 (OpenJDK 64-Bit Server VM, Java 11.0.4).
 Type in expressions for evaluation. Or try :help.
 
 scala> object HelloWorld {
-        def main(args: Array[String]): Unit = {
-          println("Hello, world!")
-        }
-      }
+     |   def main(args: Array[String]): Unit = {
+     |     println("Hello, world!")
+     |   }
+     | }
 defined object HelloWorld
 
 scala> :q  # quit
@@ -156,7 +156,13 @@ We can run PySpark by running `pyspark` on the terminal.
 root@83ed7c8eb6ac:/opt# pyspark
 Python 2.7.15+ (default, Oct  7 2019, 17:39:04)
 [GCC 7.4.0] on linux2
-... ...
+Type "help", "copyright", "credits" or "license" for more information.
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.spark.unsafe.Platform (file:/opt/spark-2.4.4-bin-hadoop2.7/jars/spark-unsafe_2.11-2.4.4.jar) to method java.nio.Bits.unaligned()
+WARNING: Please consider reporting this to the maintainers of org.apache.spark.unsafe.Platform
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+19/11/13 11:08:14 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
 Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
 Setting default log level to "WARN".
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
@@ -169,21 +175,8 @@ Welcome to
 
 Using Python version 2.7.15+ (default, Oct  7 2019 17:39:04)
 SparkSession available as 'spark'.
->>> from pyspark.sql import SparkSession
-```
-We can also submit any Spark Job using the `spark-submit` command. For this purpose, lets login `bash` and `cd` to the `spark_example`, as shown in the code below.
-```console
-root@83ed7c8eb6ac:/opt# cd setup_files/spark_example/
-root@83ed7c8eb6ac:/opt/setup_files/spark_example# spark-submit --master local[4] SimpleApp.py
-19/11/13 19:51:17 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
-... ...
-19/11/13 19:51:25 INFO DAGScheduler: Job 1 finished: count at NativeMethodAccessorImpl.java:0, took 0.077107 s
-Lines with a: 112, lines with b: 69
-19/11/13 19:51:25 INFO SparkUI: Stopped Spark web UI at http://83ed7c8eb6ac:4040
-... ...
-19/11/13 19:51:25 INFO ShutdownHookManager: Deleting directory /tmp/spark-daaa128a-02a7-4885-bdad-37636c14fa2e
-root@83ed7c8eb6ac:/opt/setup_files/spark_example#
+>>>
+
 ```
 ## Change Docker Port
 You can change the port for Jupiter by editing the configuration file on `~/.jupyter`. You can do the same for Polynote by editing the file `/opt/polynote/polynote/config.yml`.
