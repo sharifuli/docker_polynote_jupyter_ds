@@ -104,7 +104,7 @@ root@83ed7c8eb6ac:~# cat .jupyter/jupyter_notebook_config.py
 c.NotebookApp.password = u'sha1:e10b54ea7f07:dc33e226e4afc2e0e0aa1d9700864b261753bba4'
 root@83ed7c8eb6ac:~#
 ```
-<br>
+
 The procedure to change password is provided in `jupyter_notebook_config.py` as comments. Say, for example we want to set a new password `abc123`. We should open a terminal and type `ipython`, this will open an `ipython kernel`. We should just follow the steps shown below:
 ```console
 root@83ed7c8eb6ac:~# ipython
