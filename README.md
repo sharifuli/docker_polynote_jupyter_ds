@@ -104,8 +104,9 @@ root@83ed7c8eb6ac:~# cat .jupyter/jupyter_notebook_config.py
 c.NotebookApp.password = u'sha1:e10b54ea7f07:dc33e226e4afc2e0e0aa1d9700864b261753bba4'
 root@83ed7c8eb6ac:~#
 ```
+<br>
 The procedure to change password is provided in `jupyter_notebook_config.py` as comments. Say, for example we want to set a new password `abc123`. We should open a terminal and type `ipython`, this will open an `ipython kernel`. We should just follow the steps shown below:
-```
+```console
 root@83ed7c8eb6ac:~# ipython
 Python 3.6.8 (default, Oct  7 2019, 12:59:55)
 Type 'copyright', 'credits' or 'license' for more information
@@ -124,12 +125,12 @@ In [3]:
 If we want to change the password before building the image, we can follow the exact same procedure for creating a password has using any `ipython` console and then pasting the generated hash into the `jupyter_notebook_config.py` file.
 
 Now we need to copy the created hash and replace the existing hash in the file and then **kill the existing Jupyter-notebook** and start a notebook again. We can kill Jupyter-notebook using the following command:
-```
-# kill $(ps -aux | grep [j]upyter-notebook | awk '{print $2}' | head -n 1)
+```console
+root@83ed7c8eb6ac:/opt# kill $(ps -aux | grep [j]upyter-notebook | awk '{print $2}' | head -n 1)
 ```
 
 Now we can **restart the Jupyter-notebook** using the following command from the docker bash.
-```
+```console
 $ docker exec -it docker_polynote bash
 root@83ed7c8eb6ac:/opt# nohup jupyter-notebook --no-browser --allow-root --ip=0.0.0.0
 nohup: ignoring input and appending output to 'nohup.out'
