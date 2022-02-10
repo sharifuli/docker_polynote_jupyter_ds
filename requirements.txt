@@ -97,7 +97,7 @@ sqlparse==0.3.0
 tabulate==0.8.5
 tensorboard==2.0.0
 tensorflow-estimator==2.0.0
-tensorflow==2.0.0
+tensorflow==2.5.3
 tensorflow-metadata==0.15.0
 termcolor==1.1.0
 terminado==0.8.2
